@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Create a New Post</h2>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="space-y-4">
+            
+            <!-- Image Upload -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Upload Image</label>
+                <input type="file" name="image" accept="image/*" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <!-- Title Input -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Title</label>
+                <input type="text" name="title" placeholder="Enter post title" class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <!-- Content Input -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Content</label>
+                <textarea name="content" rows="4" placeholder="Write your post content here..." class="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition">
+                Submit Post
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

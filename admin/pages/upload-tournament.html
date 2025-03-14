@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Post</title>
+    <link rel="stylesheet" href="/public/src/output.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0b1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #1b162e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(147, 51, 234, 0.7);
+            width: 50%;
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #a855f7;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #d8b4fe;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #7e22ce;
+            border-radius: 5px;
+            background: #2e1d47;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #9333ea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #7e22ce;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Create a News Post</h2>
+        <form id="postForm">
+            <label for="title">Post Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter title" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" placeholder="Enter title" required>
+
+
+            <label for="prize">Prize:</label>
+            <input id="prize" name="prize" rows="4" placeholder="Enter Amount $" required></input>
+
+            <button type="submit">Post</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("postForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById("title").value;
+            const date = document.getElementById("date").value;
+            const prize = document.getElementById("prize").value;
+
+            try {
+                const response = await fetch("http://localhost:3000/upload-tournment", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json" // ✅ Send JSON data
+                    },
+                    body: JSON.stringify({ title, date, prize }) // ✅ Convert to JSON
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    alert("Post uploaded successfully!");
+                    console.log(result);
+                } else {
+                    alert("Error: " + result.error);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while uploading.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>
