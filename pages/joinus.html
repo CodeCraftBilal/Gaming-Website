@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="joinus.css">
+    <link rel="stylesheet" href="../src/output.css">
+</head>
+
+<body>
+    
+    <div class="container">
+        <form class="form">
+            <h1 class="text-2xl">Join us</h1>
+
+            <label for="name1">Name</label>
+            <input id="name1" type="text" name="Name" placeholder="Enter your Name" autocomplete="name">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="Enter your Email" required autocomplete="email">
+
+            <label for="userName">Username:</label>
+            <input id="userName" name="userName" type="text" placeholder="Enter UserName" required autocomplete="username">
+            
+            <label for="playerid">Game Id:</label>
+            <input id="playerid" name="profileid" type="text" placeholder="Game profile Id" required autocomplete="off">
+
+            <button class="bg-green-500 p-4" id="submit" type="button">Join</button>
+        </form>
+    </div>
+
+    <script>
+        let sub = document.getElementById("submit");
+
+        async function main() {
+            let name = document.getElementById("name1").value;
+            let email = document.getElementById("email").value;
+            let userName = document.getElementById("userName").value;
+            let id = document.getElementById("playerid").value;
+            
+            
+
+            let r = await fetch('http://127.0.0.1:3000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    userName: userName,
+                    id: id
+                }),
+            });
+
+            let data = await r.text();
+            console.log(data);
+        }
+
+        sub.addEventListener('click', async function (event) {
+            event.preventDefault(); // Prevents form submission
+            
+            await main();
+            let success = document.createElement('h2');
+            success.innerText = "Joined Successfully";
+
+            success.classList.add('text-center', 'text-green-500');
+    
+            let form = document.querySelector('.form');
+            let last = form.lastElementChild;
+            console.log(last);
+            form.insertBefore(success,last);
+            setTimeout(() => {
+                success.remove();
+            }, 2000);
+        });
+
+        
+    </script>
+</body>
+
+</html>

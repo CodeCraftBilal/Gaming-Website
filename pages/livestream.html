@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streams</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="../src/output.css">
+</head>
+<body class="bg-gray-900 text-white">
+    
+    <nav class="text-white h-[80px] mt-3 bg-[#1E0E3F] flex justify-between items-center w-full sticky z-40 top-0">
+        <div class="logo">
+            <img width="50" src="../resourses/images/logo.png" alt="">
+        </div>
+        <div class="hamburger-menu md:hidden">
+            <img src="../resourses/images/humber.svg" alt="">
+        </div>
+        <ul class="pages-bar max-md:hidden list-none flex gap-5 items-center justify-center">
+            <li><a href="/">Home</a></li>
+            <li><a href="/pages/livestream.html">Tournaments</a></li>
+            <li><a href="/pages/team and tournament.html">Teams & Players</a></li>
+            <li><a href="/pages/livestream.html">Live Streams</a></li>
+            <li><a href="/pages/news.html">News</a></li>
+            <li><a href="/pages/news.html">Community</a></li>
+            <li><a href="/pages/aboutus.html">About Us</a></li>
+        </ul>
+    </nav>
+    
+    <header class="bg-gradient-to-r from-purple-700 to-indigo-700 p-6 text-center text-3xl font-extrabold shadow-lg uppercase tracking-wide">
+        Live E-Sports Streams
+    </header>
+    
+    <div class="container mx-auto p-8">
+        <h2 class="text-4xl font-bold text-center mt-10 mb-8 text-purple-400">Watch Live Matches</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 text-center">
+                <img src="img/battle.png" alt="Live Match" class="rounded-lg mx-auto w-full">
+                <h3 class="text-2xl font-bold mt-4 text-yellow-400">Battle of Legends</h3>
+                <p class="text-lg text-gray-300">Streaming Now</p>
+                <button class="mt-4 bg-red-500 hover:bg-red-600 px-6 py-3 rounded-full font-semibold shadow-md transition-transform transform hover:scale-110">Watch Now</button>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 text-center">
+                <img src="img/champion.png" alt="Live Match" class="rounded-lg mx-auto w-full">
+                <h3 class="text-2xl font-bold mt-4 text-yellow-400">Champions Showdown</h3>
+                <p class="text-lg text-gray-300">Upcoming in 30 min</p>
+                <button class="mt-4 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-full font-semibold shadow-md transition-transform transform hover:scale-110">Set Reminder</button>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 text-center">
+                <img src="img/gammer.png" alt="Live Match" class="rounded-lg mx-auto w-full">
+                <h3 class="text-2xl font-bold mt-4 text-yellow-400">Pro Gamers Cup</h3>
+                <p class="text-lg text-gray-300">Live at 8 PM EST</p>
+                <button class="mt-4 bg-green-500 hover:bg-green-600 px-6 py-3 rounded-full font-semibold shadow-md transition-transform transform hover:scale-110">Watch Trailer</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="mt-12 bg-gray-800 text-center p-4 text-gray-400 text-lg">
+        © 2025 E-Sports Arena | All Rights Reserved
+    </footer>
+</body>
+</html>
