@@ -8,6 +8,8 @@ import { fileURLToPath } from 'url';
 import news from './routes/news.js'
 import community from './routes/community.js';
 import tournment from './routes/tournment.js'
+import pages from './routes/pages.js';
+import dashboard from './routes/dashboard.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,9 +32,16 @@ mongoose.connect("mongodb://127.0.0.1:27017/Player")
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error("Could not connect to MongoDB", err));
 
+app.use('/admin', dashboard)
 app.use('/upload-news', news);
 app.use('/upload-community', community);
 app.use('/upload-tournment', tournment)
+app.use('/pages', pages);
+
+app.get('/', (req, res) => {
+    res.render('index');
+})
+
 
 app.post('/submit', (req, res) => {
     console.log("Admin login successful");

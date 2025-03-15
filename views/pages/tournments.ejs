@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments | Gaming Website</title>
+    <link rel="stylesheet" href="../src/output.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+<body class="bg-gray-900 text-white">
+    
+    <!-- Navbar -->
+    <%- include('../navbar') %>
+    
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-64 flex items-center justify-center" style="background-image: url('https://source.unsplash.com/1600x900/?gaming');">
+        <div class="bg-black bg-opacity-60 p-6 rounded-lg text-center">
+            <h1 class="text-4xl font-bold text-green-400">Upcoming Tournaments</h1>
+            <p class="mt-2 text-gray-300">Join the battle and compete with the best players!</p>
+        </div>
+    </section>
+    
+    <!-- Tournament Listings -->
+    <section class="container mx-auto p-8">
+        <h2 class="text-3xl font-bold text-center text-green-400 mb-6">Current & Upcoming Tournaments</h2>
+        
+        <div id="tournamentList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Tournament Cards will be dynamically inserted here -->
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 p-4 text-center mt-8">
+        <p>&copy; 2025 Gaming Website. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to Fetch and Display Tournaments -->
+    <script>
+        async function fetchTournaments() {
+            try {
+                const response = await fetch("http://localhost:3000/upload-tournment/getPosts", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({}) // Sending an empty body as the backend doesn't expect any parameters
+                });
+    
+                const tournaments = await response.json();
+                const tournamentList = document.getElementById("tournamentList");
+    
+                tournamentList.innerHTML = ""; // Clear previous data
+    
+                if (tournaments.length === 0) {
+                    tournamentList.innerHTML = `<p class="text-center text-gray-400">No tournaments available at the moment.</p>`;
+                    return;
+                }
+    
+                tournaments.forEach(tournament => {
+                    const card = document.createElement("div");
+                    card.className = "bg-gray-800 p-6 rounded-lg shadow-lg";
+    
+                    card.innerHTML = `
+                        <h3 class="text-xl font-bold text-green-400">${tournament.title}</h3>
+                        <p class="text-gray-300 mt-2">Date: ${new Date(tournament.date).toDateString()}</p>
+                        <p class="text-gray-300">Prize Pool: $${tournament.prize}</p>
+                        <a href="#" class="mt-4 inline-block bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Register</a>
+                    `;
+    
+                    tournamentList.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Error fetching tournaments:", error);
+                document.getElementById("tournamentList").innerHTML = `<p class="text-center text-red-500">Failed to load tournaments.</p>`;
+            }
+        }
+    
+        // Load tournaments when the page loads
+        document.addEventListener("DOMContentLoaded", fetchTournaments);
+    </script>
+    
+</body>
+</html>
