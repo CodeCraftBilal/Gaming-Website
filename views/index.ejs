@@ -6,30 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-sports Gaming Websites</title>
     <link rel="icon" type="image/svg" href="favicon.svg">
-    <!-- <link rel="stylesheet" href="../src/output.css"> -->
-    <link rel="stylesheet" href=".index.css">
-    <link rel="stylesheet" href="output.css">
-     <!-- <link rel="stylesheet" href="/public/src/output.css"> -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="/styles/styles.css">
+     <link rel="stylesheet" href="/src/output.css">
 </head>
-<body>
+<body class="bg-black">
     <%- include('navbar') %>
     <main>
         <section id="Home max-md:w-full">
             <div class="home-section flex justify-between relative">
-                <div class="flex flex-col gap-2 text-content absolute left-14 top-20 w-1/2">
-                    <div class="text-green-700 font-bold text-3xl max-md:text-xl">Welcome to the Future of E-Sports</div>
+                <div class="flex flex-col gap-2 text-content absolute left-14 top-20 w-1/2 bg-black/30 p-4 rounded-xl z-10">
+                    <div class="text-green-700 font-bold text-3xl max-md:text-xl">E-Sports</div>
                     <div class="text-white font-bold text-6xl max-md:text-xl">Join the Ultimate Gaming Experience</div>
                     <!-- <div class="font-thin tracking-wider text-xl max-md:xl:">Lorem, ipsum dolor.</div> -->
-                    <div class="max-md:xl">Compete in top tournaments, watch live streams, and connect with the best players worldwide.</div>
-                    <div class="sign-in bg-green-700 flex items-center justify-center "> <a href="pages/joinus.html">Join us</a></div>
+                    <div class="md:text-lg text-white">Compete in tournaments and make your mark in the gaming world.</div>
+                    <div class="sign-in bg-green-700 flex items-center justify-center w-28 text-xl font-bold py-3 rounded-lg "> <a href="pages/joinus.html">Join us</a></div>
                 </div>
                 <img src="resourses/images/home1.png" alt="image">
             </div>
         </section>
 
-         <section>
-            <div class="stream flex items-center justify-between max-md:flex-col max-md:w-full">
+         <section class=" flex flex-col items-center justify-center red">
+            <div class="stream flex items-center justify-around max-md:flex-col max-md:w-full">
                 <div class="streamCard flex justify-center items-center gap-3 text-white">
                     <div class="strImg object-contain">
                         <img src="resourses/images/l1.png" alt="" class="object-fill">
